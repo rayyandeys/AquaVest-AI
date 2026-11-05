@@ -1,0 +1,12 @@
+export interface Holding {id:number;symbol:string;company_name:string;sector:string;quantity:number;average_price:number;current_price:number;investment:number;current_value:number;pnl:number;return_percent:number;day_pnl:number;day_change:number;source:string;as_of:string;updated_at:string;is_stale:boolean;volatility:number}
+export interface Allocation {name:string;value:number;percent:number}
+export interface PortfolioSummary {holdings:Holding[];current_value:number;account_value:number;cash_balance:number;investment:number;pnl:number;return_percent:number;day_pnl:number;day_percent:number;realized_pnl:number;risk_score:number;risk_level:string;diversification:number;weighted_volatility:number;stock_allocation:Allocation[];sector_allocation:Allocation[];alerts:string[];story:string;best_performer:string;source:string;quote_updated_at:string|null;quotes_stale:boolean}
+export interface Transaction {id:number;symbol:string;company_name:string;transaction_type:'BUY'|'SELL';quantity:number;price:number;transaction_date:string;realized_pnl:number}
+export interface Stock {symbol:string;company_name:string;sector:string;price:number;previous_close:number;change:number;change_percent:number;open:number;day_high:number;day_low:number;high_52w:number;low_52w:number;pe:number|null;market_cap:number|null;dividend_yield:number|null;volume:number;source:string;as_of:string;updated_at:string;is_stale:boolean}
+export interface StockHistory {points:{date:string;value:number}[];source:string;note?:string;interval?:string}
+export interface StockAnalytics {ma20:number;ma50:number;momentum:number;volatility:number;trend:string;volatility_label:string;risk_level:string;distance_high:number;distance_low:number;ma_position:string}
+export type WatchlistItem=Stock;
+export interface AIStockAnalysis {summary:string;trend:string;risk_level:string;confidence:number;strengths:string[];risks:string[];valuation_view:string;momentum_view:string;investor_considerations:string[];provider:string;disclaimer:string;data_source:string}
+export interface AIPortfolioAnalysis {summary:string;healthy:string[];weaknesses:string[];concentration_risks:string[];questions:string[];observations:string[];risk_score:number;diversification:number;risk_level:string;provider:string;disclaimer:string;data_source:string}
+export interface SearchStock {symbol:string;company_name:string;sector:string}
+export interface Markets {indices:{name:string;value:number;change:number}[];indices_source:string;stocks:Stock[];most_watched:Stock[]}

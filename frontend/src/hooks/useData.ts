@@ -1,0 +1,2 @@
+import {useEffect,useState} from 'react';import {api,errorMessage} from '../services/api';
+export function useData<T>(url:string,revision=0){const [data,setData]=useState<T>();const [error,setError]=useState('');const [loading,setLoading]=useState(true);useEffect(()=>{let active=true;setLoading(true);setError('');api.get<T>(url).then(r=>{if(active)setData(r.data)}).catch(e=>{if(active)setError(errorMessage(e))}).finally(()=>{if(active)setLoading(false)});return()=>{active=false}},[url,revision]);return {data,error,loading};}
